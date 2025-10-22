@@ -1,4 +1,4 @@
-import webdriver
+from selenium import webdriver
 from os import system, name
 import chromedriver_binary
 from time import time, strftime, gmtime, sleep
@@ -15,14 +15,34 @@ def clear_terminal():
         _ = system('clear')
 
 clear_terminal()
-system('title PROGRAM_NAME')
+system('title TikTok Engagement Bot')
 
-print(pyfiglet.figlet_format("PROGRAM_NAME", font="slant"))
-print("1. Option 1.\n2. Option 2.\n3. Option 3.\n3. Option 4.\n4. Credits.\n")
+print(pyfiglet.figlet_format("TikTok Bot", font="slant"))
+print("=" * 50)
+print("Welcome to TikTok Engagement Bot!")
+print("=" * 50)
+print("1. Increase Video Views")
+print("2. Increase Video Likes")
+print("3. Increase Followers")
+print("4. Increase Video Shares")
+print("5. View Credits")
+print("\nNote: Please paste the TikTok URL when prompted.\n")
 
-mode = int(input("Mode: "))
+try:
+    mode = int(input("Enter your choice (1-5): "))
+    if not 1 <= mode <= 5:
+        raise ValueError
+except ValueError:
+    print("Please enter a valid number between 1 and 5!")
+    exit(1)
 
-if mode == 1 or mode == 2 or mode == 3 or mode == 4:
+if mode == 5:
+    print("\nTikTok Engagement Bot")
+    print("Created by: vdutts7")
+    print("GitHub: https://github.com/vdutts7/tiktok-bot")
+    exit(0)
+
+if 1 <= mode <= 4:
     url = input("URL: ")
 
     start = time()
@@ -42,16 +62,30 @@ if mode == 1 or mode == 2 or mode == 3 or mode == 4:
 def beautify(arg):
     return format(arg, ',d').replace(',', '.')
 
-def update_title1(): # Update the title IF option 1 was picked.
+def update_title1(): # Update the title for video views
     global metric1
     
     while True:
         time_elapsed = strftime('%H:%M:%S', gmtime(time() - start))
-        system(f'title PROGRAM_NAME ^| Metric 1: {beautify(metric1)} ^| Elapsed Time: {time_elapsed}')
+        system(f'title TikTok Bot ^| Views Generated: {beautify(metric1)} ^| Elapsed Time: {time_elapsed}')
 
-def update_title2(): # Update the title IF option 2 was picked.
+def update_title2(): # Update the title for video likes
     global metric2
     
     while True:
         time_elapsed = strftime('%H:%M:%S', gmtime(time() - start))
-        system(f'title PROGRAM_NAME ^| Metric 2: {beautify(metric2
+        system(f'title TikTok Bot ^| Likes Generated: {beautify(metric2)} ^| Elapsed Time: {time_elapsed}')
+
+def update_title3(): # Update the title for followers
+    global metric3
+    
+    while True:
+        time_elapsed = strftime('%H:%M:%S', gmtime(time() - start))
+        system(f'title TikTok Bot ^| Followers Generated: {beautify(metric3)} ^| Elapsed Time: {time_elapsed}')
+
+def update_title4(): # Update the title for shares
+    global metric3
+    
+    while True:
+        time_elapsed = strftime('%H:%M:%S', gmtime(time() - start))
+        system(f'title TikTok Bot ^| Shares Generated: {beautify(metric3)} ^| Elapsed Time: {time_elapsed}')
